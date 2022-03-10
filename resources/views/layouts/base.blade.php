@@ -12,7 +12,7 @@
 <body>
     <div class="container">
         <h1 class="my-3 text-center">Объявления</h1>
-        @yeild('main')
+        @yield('main')
     </div>
 </body>
 
