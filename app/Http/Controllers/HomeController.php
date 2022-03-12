@@ -38,6 +38,12 @@ class HomeController extends Controller
     }
     public function storeBb(Request $request)
     {
+        Auth::user()->bbs->last()->create([
+            'title' => $request->title,
+            'content' => $request->content,
+            'price' => $request->price,
+            'user_id' => auth()->id()
+        ]);
         return redirect()->route('home');
     }
 }
