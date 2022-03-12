@@ -15,6 +15,7 @@
                 <h3>{{ $bb->title }}</h3>
             </td>
             <td>{{ $bb->price }}</td>
+            <td>Автор: {{ $bb->user->name }}</td>
             <td>
                 <a href="{{ route('index') }}">На перечень объявлениий</a>
             </td>
