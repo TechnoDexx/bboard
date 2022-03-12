@@ -46,4 +46,28 @@ class HomeController extends Controller
         ]);
         return redirect()->route('home');
     }
+    public function showEditBbForm(Bb $bb)
+    {
+        return view('bb_edit', ['bb' => $bb]);
+    }
+    public function updateBb(Request $request, Bb $bb)
+    {
+        $bb->fill([
+            'title' => $request->title,
+            'content' => $request->content,
+            'price' => $request->price,
+            'user_id' => auth()->id()
+        ]);
+        $bb->save();
+        return redirect()->route('home');
+    }
+    public function showDeleteBbForm(Bb $bb)
+    {
+        return view('bb_delete', ['bb' => $bb]);
+    }
+    public function destroyBb(Bb $bb)
+    {
+        $bb->delete();
+        return redirect()->route('home');
+    }
 }
