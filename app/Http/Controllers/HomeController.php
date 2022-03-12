@@ -37,7 +37,6 @@ class HomeController extends Controller
     }
     public function storeBb(Request $request)
     {
-        Auth::user()->user->create();
         return redirect()->route('home');
     }
 }
