@@ -15,6 +15,6 @@
     <label for="txtPrice">Цена</label>
     <input name="price" id="txtPrice" class="form-control">
 </div>
-<input type="submit" class="btn btn-primary" value="Добаваить">
+<input type="submit" class="btn btn-primary" value="Добавить">
 </form>
 @endsection

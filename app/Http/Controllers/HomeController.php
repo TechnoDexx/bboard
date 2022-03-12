@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use GuzzleHttp\Promise\Create;
+use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -35,12 +37,7 @@ class HomeController extends Controller
     }
     public function storeBb(Request $request)
     {
-        Auth::user()->bbs->create([
-            'title' => $request->title,
-            'content' => $request->content,
-            'price' => $request->price
-        ]);
-
+        Auth::user()->user->create();
         return redirect()->route('home');
     }
 }
