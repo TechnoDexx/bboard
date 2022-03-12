@@ -26,7 +26,21 @@ class HomeController extends Controller
     {
         return view(
             'home',
-            ['bbs' => Auth::user()->index->bbs()->latest()->get()]
+            ['bbs' => Auth::user()->bbs->last()->get()]
         );
+    }
+    public function showAddBbForm()
+    {
+        return view('bb_add');
+    }
+    public function storeBb(Request $request)
+    {
+        Auth::user()->bbs->create([
+            'title' => $request->title,
+            'content' => $request->content,
+            'price' => $request->price
+        ]);
+
+        return redirect()->route('home');
     }
 }
