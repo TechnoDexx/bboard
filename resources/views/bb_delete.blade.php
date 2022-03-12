@@ -3,10 +3,25 @@
 @section('title', 'Удаление объявления :: Мои объявления')
 
 @section('main')
-<h2>{{ $bb->title }}</h2>
-<p>{{ $bb->content }}</p>
-<p>{{ $bb->price }} руб.</p>
-<p>Автор: {{ $bb->user->name }}</p>
+<table class="table table-stripped">
+    <thead>
+        <tr>
+            <th>Товар</th>
+            <th>Цена, руб.</th>
+            <th>Автор объявления</th>
+            <th>&nbsp;</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+                <h3>{{ $bb->title }}</h3>
+            </td>
+            <td>{{ $bb->price }}</td>
+            <td>{{ $bb->user->name }}</td>
+        </tr>
+    </tbody>
+</table>
 <form action="{{ route('bb.destroy', ['bb' => $bb->id]) }}"
       method="POST">
     @csrf

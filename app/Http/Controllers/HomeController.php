@@ -6,7 +6,7 @@ use GuzzleHttp\Promise\Create;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use app\Models\Bb;
+use App\Models\Bb;
 
 class HomeController extends Controller
 {
