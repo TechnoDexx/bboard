@@ -7,7 +7,7 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Bb;
-
+use Illuminate\Database\Eloquent\Model;
 
 class HomeController extends Controller
 {
