@@ -7,7 +7,7 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Bb;
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database;
 
 class HomeController extends Controller
 {
@@ -37,19 +37,13 @@ class HomeController extends Controller
     public function index()
     {
         $bbs_c = [];
-        $bbs_c = DB::select('select * from bbs where user_id = ?', [auth()->id()]);
-        $bbs_c = Auth::User()->bbs->last()->get();
-        if ($bbs_c != null) {
-            return view(
-                'home',
-                ['bbs' => $bbs_c]
-            );
-        } else {
-            return view(
-                'home',
-                ['bbs' => []]
-            );
-        }
+        $bbs_c = Bb::where('user_id', auth()->id())->get();
+
+
+        return view(
+            'home',
+            ['bbs' => $bbs_c]
+        );
     }
 
     public function showAddBbForm()
@@ -58,12 +52,14 @@ class HomeController extends Controller
     }
     public function storeBb(Request $request)
     {
-        Auth::user()->bbs->last()->create([
-            'title' => $request->title,
-            'content' => $request->content,
-            'price' => $request->price,
-            'user_id' => auth()->id()
-        ]);
+
+        $bb_item = new Bb;
+        $bb_item->title = $request->title;
+        $bb_item->content = $request->content;
+        $bb_item->price = $request->price;
+        $bb_item->user_id = $request->user()->id;
+        $bb_item->save();
+
         return redirect()->route('home');
     }
     public function showEditBbForm(Bb $bb)
@@ -76,7 +72,7 @@ class HomeController extends Controller
             'title' => $request->title,
             'content' => $request->content,
             'price' => $request->price,
-            'user_id' => auth()->id()
+            'user_id' => $request->user()->id
         ]);
         $bb->save();
         return redirect()->route('home');
