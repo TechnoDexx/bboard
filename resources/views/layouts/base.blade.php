@@ -13,25 +13,28 @@
 <body>
     <div class="container">
         <nav class="navbar navbar-light bg-light">
-            <a href="{{ route('index') }}"
-            class="navbar-brand mr-auto">Главная</a>
-            <a href="{{ route('register') }}"
-            class="nav-item nav-link">Регистрация</a>
-            <a href="{{ route('login') }}"
-            class="nav-item nav-link">Вход</a>
-            <a href="{{ route('home') }}"
-            class="nav-item nav-link">Мои объявления</a>
-            <form action="{{ route('logout') }}" method="POST"
-            class="form-inline">
-            @csrf
-            <tr>
-                    <td> <input type="submit" class="btn btn-danger"
-                    value="Выход"></td>
-            </tr>
-            {{-- <p>{{ auth()->user()->name }}</p> --}}
-            {{-- <input type="submit" class="btn btn-danger"
-             value="Выход"> --}}
-        </form>
+            <a href="{{ route('index') }}" class="navbar-brand mr-auto">Главная</a>
+            @guest
+            <a href="{{ route('register') }}" class="nav-item nav-link">Регистрация</a>
+            <a href="{{ route('login') }}" class="nav-item nav-link">Вход</a>
+            @endguest
+            @auth
+            <a href="{{ route('home') }}" class="nav-item nav-link">Мои объявления</a>
+            <form action="{{ route('logout') }}" method="POST" class="form-inline">
+                @csrf
+                <table>
+                    <tr>
+                        @if(!empty(Auth::user()->name))
+                        <td>
+                            <p>Добро пожаловать, {{ Auth::user()->name }} &nbsp;</p>
+                        </td>
+                        @endif
+                        <td><input type="submit" class="btn btn-danger" value="Выход"></td>
+                    </tr>
+                </table>
+            </form>
+            @endauth
+
         </nav>
         <h1 class="my-3 text-center">Объявления</h1>
         @yield('main')
