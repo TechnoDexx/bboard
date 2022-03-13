@@ -12,6 +12,7 @@
     </tr>
 </thead>
 <tbody>
+    @if(count($bbs) >0)
     @foreach ($bbs as $bb)
     <tr>
         <td><h3>{{ $bb->title }}</h3></td>
@@ -24,6 +25,7 @@
         </td>
     </tr>
   @endforeach
+  @endif
 </tbody>
 </table>
 @endif

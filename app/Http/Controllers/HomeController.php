@@ -8,8 +8,16 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Bb;
 
+
 class HomeController extends Controller
 {
+
+    private const BB_VALIDATOR = [
+        'title' => 'required|max:50',
+        'content' => 'required',
+        'price' => 'required|numeric'
+    ];
+
     /**
      * Create a new controller instance.
      *
@@ -25,13 +33,25 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
+
     public function index()
     {
-        return view(
-            'home',
-            ['bbs' => Auth::user()->bbs->last()->get()]
-        );
+        $bbs_c = [];
+        $bbs_c = DB::select('select * from bbs where user_id = ?', [auth()->id()]);
+        $bbs_c = Auth::User()->bbs->last()->get();
+        if ($bbs_c != null) {
+            return view(
+                'home',
+                ['bbs' => $bbs_c]
+            );
+        } else {
+            return view(
+                'home',
+                ['bbs' => []]
+            );
+        }
     }
+
     public function showAddBbForm()
     {
         return view('bb_add');
