@@ -1,7 +1,10 @@
 @extends('layouts.base')
 @section('title', 'Мои объявления')
 @section('main')
-{{-- <h2 class="text-right">Добро пожаловать, {{ Auth::user()->name }}</h2> --}}
+@if (!empty(Auth::user()->name))
+<p class="text-right">Добро пожаловать, {{ Auth::user()->name }}</p>
+@endif
+
 <p class="text-right"><a href="{{ route('bb.add') }}">Добавить объявление</a></p>
 @if(count($bbs) > 0)
 <table class="table table-stripped">

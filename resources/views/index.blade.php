@@ -1,6 +1,9 @@
 @extends('layouts.base')
 @section('title','Главная')
 @section('main')
+@if(!empty(Auth::user()->name))
+<p class="text-right">Добро пожаловать, {{ Auth::user()->name }}</p>
+@endif
         @if(count($bbs) > 0)
         <table class="table table-stripped">
             <thead>
