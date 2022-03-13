@@ -25,11 +25,7 @@
             class="form-inline">
             @csrf
             <tr>
-                @if (!empty(Auth::user()->name))
-                <td>Привет, {{ Auth::user()->name}}&nbsp;</td>
-                @endif
-
-                <td> <input type="submit" class="btn btn-danger"
+                    <td> <input type="submit" class="btn btn-danger"
                     value="Выход"></td>
             </tr>
             {{-- <p>{{ auth()->user()->name }}</p> --}}
