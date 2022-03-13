@@ -28,4 +28,5 @@
     @method('DELETE')
     <input type="submit" class="btn btn-danger" value="Удалить">
 </form>
+
 @endsection('main')
