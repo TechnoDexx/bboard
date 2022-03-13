@@ -18,6 +18,13 @@ class HomeController extends Controller
         'price' => 'required|numeric'
     ];
 
+    private const BB_ERROR_MESSAGES = [
+        'price.required' => 'Раздавать бесплатно товары нельзя',
+        'required' => 'Заполните это поле',
+        'max' => 'Значение должно быть длиннее :max символов',
+        'numeric' => 'Введите число'
+    ];
+
     /**
      * Create a new controller instance.
      *
@@ -52,11 +59,15 @@ class HomeController extends Controller
     }
     public function storeBb(Request $request)
     {
+        $validated = $request->validate(
+            self::BB_VALIDATOR,
+            self::BB_ERROR_MESSAGES
+        );
 
         $bb_item = new Bb;
-        $bb_item->title = $request->title;
-        $bb_item->content = $request->content;
-        $bb_item->price = $request->price;
+        $bb_item->title = $validated['title'];
+        $bb_item->content = $validated['content'];
+        $bb_item->price = $validated['price'];
         $bb_item->user_id = $request->user()->id;
         $bb_item->save();
 
@@ -68,10 +79,15 @@ class HomeController extends Controller
     }
     public function updateBb(Request $request, Bb $bb)
     {
+        $validated = $request->validate(
+            self::BB_VALIDATOR,
+            self
+            ::BB_ERROR_MESSAGES
+        );
         $bb->fill([
-            'title' => $request->title,
-            'content' => $request->content,
-            'price' => $request->price,
+            'title' => $validated['title'],
+            'content' => $validated['content'], //$request->content,
+            'price' => $validated['price'], // $request->price,
             'user_id' => $request->user()->id
         ]);
         $bb->save();
