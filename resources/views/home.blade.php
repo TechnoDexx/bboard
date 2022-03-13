@@ -8,6 +8,7 @@
     <tr>
         <th>Товар</th>
         <th>Цена, руб.</th>
+        <th>Автор</th>
         <th colspan="2">&nbsp;</th>
     </tr>
 </thead>
@@ -17,6 +18,7 @@
     <tr>
         <td><h3>{{ $bb->title }}</h3></td>
         <td>{{ $bb->price }}</td>
+        <td>{{ $bb->user->name }}</td>
         <td>
             <a href="{{ route('bb.edit',['bb'=>$bb->id]) }}">Изменить</a>
         </td>

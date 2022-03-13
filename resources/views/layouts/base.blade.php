@@ -24,8 +24,17 @@
             <form action="{{ route('logout') }}" method="POST"
             class="form-inline">
             @csrf
-            <input type="submit" class="btn btn-danger"
-             value="Выход">
+            <tr>
+                @if (!empty(Auth::user()->name))
+                <td>Привет, {{ Auth::user()->name}}&nbsp;</td>
+                @endif
+
+                <td> <input type="submit" class="btn btn-danger"
+                    value="Выход"></td>
+            </tr>
+            {{-- <p>{{ auth()->user()->name }}</p> --}}
+            {{-- <input type="submit" class="btn btn-danger"
+             value="Выход"> --}}
         </form>
         </nav>
         <h1 class="my-3 text-center">Объявления</h1>

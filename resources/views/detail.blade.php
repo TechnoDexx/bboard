@@ -5,6 +5,7 @@
     <thead>
         <tr>
             <th>Товар</th>
+            <th>Описание</th>
             <th>Цена, руб.</th>
             <th>Автор объявления</th>
             <th>&nbsp;</th>
@@ -15,6 +16,7 @@
             <td>
                 <h3>{{ $bb->title }}</h3>
             </td>
+            <td>{{ $bb->content }}</td>
             <td>{{ $bb->price }}</td>
             <td>{{ $bb->user->name }}</td>
             <td>

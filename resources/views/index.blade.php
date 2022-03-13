@@ -7,6 +7,7 @@
                 <tr>
                     <th>Товар</th>
                     <th>Цена, руб.</th>
+                    <th>Автор</th>
                     <th>&nbsp;</th>
                 </tr>
             </thead>
@@ -17,6 +18,7 @@
                         <h3>{{ $bb->title }}</h3>
                     </td>
                     <td>{{ $bb->price }}</td>
+                    <td>{{ $bb->user->name }}</td>
                     <td>
                         <a href="{{ route('detail',['bb'=>$bb->id]) }}">Подробнее...</a>
                     </td>
