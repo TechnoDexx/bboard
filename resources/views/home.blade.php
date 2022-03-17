@@ -2,7 +2,7 @@
 @section('title', 'Мои объявления')
 @section('main')
 @if (!empty(Auth::user()->name))
-<p class="text-right">Добро пожаловать, {{ Auth::user()->name }}</p>
+<p class="text-right">Добро пожаловать, {{ Auth::user()->name }} (ID: {{ Auth::user()->id }})</p>
 @endif
 
 <p class="text-right"><a href="{{ route('bb.add') }}">Добавить объявление</a></p>
