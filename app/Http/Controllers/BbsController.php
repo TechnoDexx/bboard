@@ -8,7 +8,10 @@ class BbsController extends Controller
 {
     public function index()
     {
-        $context = ['bbs' => Bb::latest()->get()->paginate(6)];
+        $bbs = Bb::paginate(6);
+
+        // $context = ['bbs' => Bb::latest()->get()];
+        $context = ['bbs' => $bbs];
 
         return view('index', $context);
     }

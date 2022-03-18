@@ -29,6 +29,6 @@
                 @endforeach
             </tbody>
         </table>
-        {!! bbs->withQueryString()->links('pagination::Bootstrap-5') !!}
+        {!! $bbs->withQueryString()->links('pagination::bootstrap-5') !!}
         @endif
 @endsection('main')
