@@ -34,6 +34,7 @@
   @endif
 </tbody>
 </table>
+{!! $bbs->withQueryString()->links('pagination::bootstrap-5') !!}
 @endif
 @endsection
 

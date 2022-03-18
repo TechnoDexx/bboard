@@ -3,8 +3,10 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Database\Schema\Blueprint;
 use App\Models\Bb;
 use App\Models\User;
+use Illuminate\Database\Schema\Blueprint as SchemaBlueprint;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Bb>
@@ -19,6 +21,12 @@ class BbFactory extends Factory
      */
     public function definition()
     {
-        return [];
+        return [
+            'title' => $this->faker->title,
+            'content' => $this->faker->text,
+            'price' => $this->faker->numberBetween(1, 100000000),
+            'user_id' => User::all()->random()->id,
+        ];
+        // User::all()->random()->id;
     }
 }
