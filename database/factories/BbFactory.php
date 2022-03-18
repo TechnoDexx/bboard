@@ -24,9 +24,8 @@ class BbFactory extends Factory
         return [
             'title' => $this->faker->name(),
             'content' => $this->faker->text,
-            'price' => $this->faker->unique()->biasedNumberBetween(1, 100000000), //numberBetween(1, 100000000),
+            'price' => $this->faker->unique()->biasedNumberBetween(1, 100000000),
             'user_id' => User::all()->random()->id,
         ];
-        // User::all()->random()->id;
     }
 }
