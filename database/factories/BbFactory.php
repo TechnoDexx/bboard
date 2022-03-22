@@ -2,7 +2,6 @@
 
 namespace Database\Factories;
 
-
 use Illuminate\Database\Eloquent\Factories\Factory;
 use App\Models\Bb;
 use App\Models\User;
@@ -13,6 +12,7 @@ use App\Models\User;
 class BbFactory extends Factory
 {
     protected $model = Bb::class;
+
     /**
      * Define the model's default state.
      *
@@ -21,7 +21,7 @@ class BbFactory extends Factory
     public function definition()
     {
         return [
-            'title' => $this->faker->name,
+            'title' => $this->faker->text(50), //name(),
             'content' => $this->faker->text,
             'price' => $this->faker->unique()->randomFloat(2, 1, 100000000),
             'user_id' => User::all()->random()->id,
