@@ -23,7 +23,7 @@ class BbFactory extends Factory
         return [
             'title' => $this->faker->name,
             'content' => $this->faker->text,
-            'price' => $this->faker->randomFloat(1, 100000000),
+            'price' => $this->faker->unique()->randomFloat(2, 1, 100000000),
             'user_id' => User::all()->random()->id,
         ];
     }
