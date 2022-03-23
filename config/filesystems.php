@@ -1,7 +1,8 @@
 <?php
 
-return [
+use Illuminate\Support\Facades\Storage;
 
+return [
     /*
     |--------------------------------------------------------------------------
     | Default Filesystem Disk
@@ -29,7 +30,6 @@ return [
     */
 
     'disks' => [
-
         'local' => [
             'driver' => 'local',
             'root' => storage_path('app'),
@@ -55,7 +55,6 @@ return [
             'use_path_style_endpoint' => env('AWS_USE_PATH_STYLE_ENDPOINT', false),
             'throw' => false,
         ],
-
     ],
 
     /*
@@ -71,6 +70,6 @@ return [
 
     'links' => [
         public_path('storage') => storage_path('app/public'),
+        public_path('avatars') => storage_path('app/public/avatars'),
     ],
-
 ];
