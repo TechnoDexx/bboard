@@ -3,26 +3,24 @@
 namespace App\Http\Controllers;
 
 use GuzzleHttp\Promise\Create;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Bb;
-use Illuminate\Database;
 
 class HomeController extends Controller
 {
-
     private const BB_VALIDATOR = [
+        'pic' => 'sometimes|image',
         'title' => 'required|max:50',
         'content' => 'required',
-        'price' => 'required|numeric'
+        'price' => 'required|numeric',
     ];
 
     private const BB_ERROR_MESSAGES = [
         'price.required' => 'Раздавать бесплатно товары нельзя',
         'required' => 'Заполните это поле',
         'max' => 'Значение должно быть длиннее :max символов',
-        'numeric' => 'Введите число'
+        'numeric' => 'Введите число',
     ];
 
     /**
@@ -40,7 +38,6 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-
     public function index()
     {
         $bbs_c = [];
@@ -57,6 +54,7 @@ class HomeController extends Controller
     {
         return view('bb_add');
     }
+
     public function storeBb(Request $request)
     {
         $validated = $request->validate(
@@ -64,7 +62,7 @@ class HomeController extends Controller
             self::BB_ERROR_MESSAGES
         );
 
-        $bb_item = new Bb;
+        $bb_item = new Bb();
         $bb_item->title = $validated['title'];
         $bb_item->content = $validated['content'];
         $bb_item->price = $validated['price'];
@@ -73,33 +71,38 @@ class HomeController extends Controller
 
         return redirect()->route('home');
     }
+
     public function showEditBbForm(Bb $bb)
     {
         return view('bb_edit', ['bb' => $bb]);
     }
+
     public function updateBb(Request $request, Bb $bb)
     {
         $validated = $request->validate(
             self::BB_VALIDATOR,
-            self
-            ::BB_ERROR_MESSAGES
+            self::BB_ERROR_MESSAGES
         );
         $bb->fill([
             'title' => $validated['title'],
             'content' => $validated['content'], //$request->content,
             'price' => $validated['price'], // $request->price,
-            'user_id' => $request->user()->id
+            'user_id' => $request->user()->id,
         ]);
         $bb->save();
+
         return redirect()->route('home');
     }
+
     public function showDeleteBbForm(Bb $bb)
     {
         return view('bb_delete', ['bb' => $bb]);
     }
+
     public function destroyBb(Bb $bb)
     {
         $bb->delete();
+
         return redirect()->route('home');
     }
 }

@@ -8,6 +8,7 @@
         <table class="table table-stripped">
             <thead>
                 <tr>
+                    <th>&nbsp;</th>
                     <th>Товар</th>
                     <th>Цена, руб.</th>
                     <th>Автор</th>
@@ -17,6 +18,9 @@
             <tbody>
                 @foreach($bbs as $bb)
                 <tr>
+                    <td>
+                        {{ $bb->pic }}
+                    </td>
                     <td>
                         <h3>{{ $bb->title }}</h3>
                     </td>

@@ -1,6 +1,7 @@
 @extends('layouts.base')
 @section('title','Добавление объявлениия :: Мои объявления')
 @section('main')
+<form action=""></form>
 <form action="{{ route('bb.store') }}" method="POST">
     @csrf
     <div class="form-group">
