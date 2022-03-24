@@ -6,6 +6,22 @@
 @endif
 
 <p class="text-right"><a href="{{ route('bb.add') }}">Добавить объявление</a></p>
+<p>&nbsp;</p>
+{{-- <p>L</p> --}}
+{{-- <form method="GET">
+    <div class="input-group mb-3">
+      <input
+        type="text"
+        name="search"
+        value="{{ request()->get('search') }}"
+        class="form-control"
+        placeholder="Поиск..."
+        aria-label="Поиск"
+        aria-describedby="button-addon2">
+      <button class="btn btn-success" type="submit" id="button-addon2">Поиск</button>
+    </div>
+</form> --}}
+{{-- <p>&nbsp;</p> --}}
 @if(count($bbs) > 0)
 <table class="table table-bordered data-table">
 <thead>

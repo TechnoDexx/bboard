@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use GuzzleHttp\Promise\Create;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use App\Models\Bb;
 
 class HomeController extends Controller
@@ -38,11 +38,13 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index()
+    public function index(Request $request)
     {
         $bbs_c = [];
-        // $bbs_c = Bb::where('user_id', auth()->id())->get();
-        $bbs_c = Bb::where('user_id', auth()->id())->paginate(6);
+        // Bb::select();
+        // Db('drop table users');
+        $bbs_c = Bb::where('user_id', auth()->id(), Bb::search($request->search))->paginate(6);
+        dump($bbs_c);
 
         return view(
             'home',
