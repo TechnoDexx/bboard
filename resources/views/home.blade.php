@@ -7,7 +7,7 @@
 
 <p class="text-right"><a href="{{ route('bb.add') }}">Добавить объявление</a></p>
 @if(count($bbs) > 0)
-<table class="table table-stripped">
+<table class="table table-bordered data-table">
 <thead>
     <tr>
         <th>Товар</th>

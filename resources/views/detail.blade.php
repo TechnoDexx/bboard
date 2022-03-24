@@ -1,7 +1,7 @@
 @extends('layouts.base')
 @section('title',$bb->title)
 @section('main')
-<table class="table table-stripped">
+<table class="table table-bordered data-table">
     <thead>
         <tr>
             <th>Товар</th>

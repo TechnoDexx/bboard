@@ -21,7 +21,7 @@ class BbFactory extends Factory
     public function definition()
     {
         return [
-            'title' => $this->faker->text(50), //name(),
+            'title' => $this->faker->name(),
             'content' => $this->faker->text,
             'price' => $this->faker->unique()->randomFloat(2, 1, 100000000),
             'user_id' => User::all()->random()->id,
