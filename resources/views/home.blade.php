@@ -21,7 +21,7 @@
       <button class="btn btn-success" type="submit" id="button-addon2">Поиск</button>
     </div>
 </form> --}}
-{{-- <p>&nbsp;</p> --}}
+ <p>&nbsp;</p>
 @if(count($bbs) > 0)
 <table class="table table-bordered data-table">
 <thead>
