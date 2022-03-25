@@ -40,8 +40,12 @@ class HomeController extends Controller
     public function index(Request $request)
     {
         $bbs_c = [];
-
-        $bbs_c = Bb::where('user_id', auth()->id())->paginate(6);
+        if ($request->filled('search')) {
+            $bbs_c = Bb::search($request->search)->where('user_id', auth()->id())->paginate(6);
+        } else {
+            $bbs_c = Bb::where('user_id', auth()->id())->paginate(6);
+        }
+        // $bbs_c = Bb::where('user_id', auth()->id())->paginate(6);
 
         return view(
             'home',

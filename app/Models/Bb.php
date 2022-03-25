@@ -15,7 +15,7 @@ class Bb extends Model
     public function toSearchableArray()
     {
         return [
-            // 'id' => $this->id,
+            'id' => $this->id,
             'title' => $this->title,
             'content' => $this->content,
             'price' => $this->price,
