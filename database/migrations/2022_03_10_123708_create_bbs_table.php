@@ -16,6 +16,7 @@ return new class () extends Migration {
         Schema::create('bbs', function (Blueprint $table) {
             $table->id();
             $table->string('title', 50);
+            $table->strung('pic', 60)->nullable;
             $table->text('content');
             $table->decimal('price', 20, 2, true);
             $table->foreignId('user_id')->constrained()

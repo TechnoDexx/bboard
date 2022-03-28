@@ -10,13 +10,14 @@ class Bb extends Model
 {
     use HasFactory;
     use Searchable;
-    protected $fillable = ['title', 'content', 'price', 'user_id'];
+    protected $fillable = ['title', 'pic', 'content', 'price', 'user_id'];
 
     public function toSearchableArray()
     {
         return [
             'id' => $this->id,
             'title' => $this->title,
+            'pic' => $this->pic,
             'content' => $this->content,
             'price' => $this->price,
      ];
