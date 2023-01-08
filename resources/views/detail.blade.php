@@ -20,7 +20,7 @@
             <td>{{ $bb->price }}</td>
             <td>{{ $bb->user->name }}</td>
             <td>
-                <a href="{{ route('index') }}">На перечень объявлениий</a>
+                <a href="{{ route('index') }}">На главную</a>
             </td>
         </tr>
     </tbody>
