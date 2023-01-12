@@ -23,6 +23,9 @@
                 <a href="{{ route('index') }}">На главную</a>
             </td>
         </tr>
+      <tr>
+        <td colspan="5"><div align="center">Сюда вставить карусель с фото</div></td>
+      </tr>
     </tbody>
 </table>
 @endsection('main')

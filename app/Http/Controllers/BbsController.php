@@ -26,4 +26,8 @@ class BbsController extends Controller
     {
         return view('detail', ['bb' => $bb]);
     }
+
+    public function store(Request $request)
+    {
+    }
 }

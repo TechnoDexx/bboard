@@ -14,6 +14,7 @@
 </span>
      @enderror
 </div>
+<br/>
 <div class="form-group">
 <label for="txtContent">Описание</label>
 <textarea name="content" id="txtContent" class="form-control @error('content') is-invalid @enderror" rows="6">{{old('content', $bb->content) }}</textarea>
@@ -23,6 +24,7 @@
 </span>
 @enderror
 </div>
+<br/>
 <div class="form-group">
     <label for="txtPrice">Цена</label>
     <input name="price" id="txtPrice" class="form-control @error('price') is-invalid @enderror" value="{{ old('price', $bb->price) }}">
@@ -32,6 +34,7 @@
         </span>
     @enderror
 </div>
+<br/>
 <input type="submit" class="btn btn-primary" value="Сохранить">
 </form>
 @endsection
